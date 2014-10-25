@@ -1,0 +1,518 @@
+----------------------------Nightmare Squad----------------------------
+		    The Doomsday Training Simulator
+			      Version 1.2
+
+		     A modification of ZDoom 1.22
+			   for Doom or Doom 2
+			   in Windows95 or 98
+
+		          by  J. Wendell Davie
+			     AKA AFTERSHOCK
+
+-----------------------------------------------------------------------
+
+
+
+Contents:
+
+1. How To Run Nightmare Squad
+2. What is Nightmare Squad?
+3. Briefing (story)
+4. Added Command Functions
+5. The Weight Limit
+6. Dropping Ammo and Armor
+7. Expanded Weapons System
+8. The Weapons
+9. Armor
+10. Monsters
+11. Cheating
+12. Settings.bex
+13. Credits
+14. Bugs
+
+
+
+
+
+1. How to run Nightmare Squad:
+
+	Nightmare Squad is a source code modification of ZDoom version 1.22.  ZDoom is a source port of Doom to Windows 95.
+
+	You should have these files in the zip:
+
+	NSquad.exe - what makes it all work.
+	NSquadfx.wad - what makes it look good.
+	Settings.bex - let's you tweak a few things
+	NSquad.txt - you're reading it
+	History.txt - What has changed, more or less
+	Zdoom122.wad - The zdoom wad from zdoom version 1.22
+	Zdoom.txt - Basic information on the engine and console
+	Commands.txt - List of commands and console variables for zdoom
+	ptc.dll
+	hermes.dll - both needed for graphics.
+	Doomlic.txt - The license information for the Doom engine.
+
+	Zdoom122.wad, Zdoom.txt, and Commands.txt are included with permission from Randy Heit.
+
+	Just unzip these files into a folder.  If either DOOM2.wad or DOOM.wad are in the same folder, just click on NSquad.exe.  Otherwise, you will need to create a shortcut and specify the location of your doom wad with the -IWAD parameter.  It is explained in ZDoom.txt.
+
+
+**********************Important**********************
+
+I encourage you to read Zdoom.txt first.  
+The rest of this file contains additions and changes 
+specific to Nightmare Squad, and it is strongly 
+recommended that you read it thoroughly, since  
+Nightmare Squad significantly changes the gameplay of
+Doom.
+
+**********************Important**********************
+
+
+
+
+
+
+
+
+2. What is Nightmare Squad?
+
+	Nightmare Squad is a new collection of weapons, and it is a completely new way to use weapons in DOOM.  You will pick up, drop, reload, and unload your new weapons, and if you are smart, you will have a buddy alongside.  There is also altered monster behavior to keep things interesting.  This version is primarily intended as a way for you to familiarize yourself with the weapons and gameplay of Nightmare Squad.  In the future, I plan to extend the story and add new monsters and levels.
+
+
+
+
+
+
+
+
+
+3. Briefing.
+   (Story)
+
+Part 1:
+
+Doomsday occurred six years ago on 10 December, 2093.  All Hell broke loose, quite literally.  Using experimental teleportation gates of human construction which were located on the moons of Mars, alien forces invaded the moons and made their way to Earth.  The aliens had almost demonic appearances and erected occult symbols in the areas that they occupied.  In the years since, scientists and theologians have continued a raging debate about what the creatures were and where they came from.  The only agreement to come from the discussion was a name for these aliens.  They became known as the "Demonoids."
+	
+We do know that an small number of marines, or only one according to the popular version, managed to stop the invasion and travel through the teleportation devices to the home of the Demonoids.  The military assures us that their mission was successful and that they were able to destroy the Demonoids' teleportation equipment, ending the invasion.  However, all other details regarding those marines and their mission are classified under the codename "Operation Rage."  We don't even know if they were able to return home...
+
+During the aftermath of the invasion it was discovered that energy weapons used by the Demonoids and the plasma weapons developed for the military had nearly identical spectral signatures.  Further study showed that a stronger version of this same plasma signature could also be found in the flash accompanying teleportation.  When it was learned that all plasma and teleportation technology had been developed by one company, the UAC was forced to divulge the origin of their plasma research.  However, the records could not be found and all of the primary researchers died.  The UAC was shut down and the inquiry continues today.  The result is that all applications of plasma have been made illegal.
+
+Part 2:
+
+Ladies and Gentlemen of the United Nations Space Marines, you are all well aware that the human race narrowly avoided extinction only six years ago.  Since that time, our scientists have been studying every scrap of information available regarding the Demonoid invasion.  They still are unable to determine whether or not the Demonoids can open a teleportation gate to Earth without an existing destination gate on our end.  In other words, we can not determine if or when this enemy will return to our corner of the universe.  For this reason I am urging each of you to spend some time in the Doomsday simulator.  The simulator has been programmed with all available information on the Demonoids, and all the weapons have been updated to those in current use.  If the demons return, I want them to meet a planet ready to defend itself fully and efficiently.  Let the philosophers argue what the Demonoids are.  We already know all we need to about them.  We know they bleed.
+
+
+
+
+
+
+
+
+	
+4. Added command functions:
+
+	These are new commands that need to be bound to keys:
+
+	+pickitup:  enables you to grab objects.  Without this function active, you will ignore all gettable things.  (If you find this too distracting, open the console and just type +pickitup.  This will keep the function active until the engine receives a -pickitup command when the pickitup key is pressed then released.  If you wish to do this, it would be wise to unbind the pickitup key to prevent the function from being turned off accidentally)
+
+	note:  If at any time you pick up some ammo from an item, but not all of it, the ammo you didn't use will stay in the item.
+
+	+drop:  causes you to toss the weapon you are holding away.
+
+	+reload:  reloads your current weapon
+
+	+unload:  opposite of +reload.
+
+	+altattack:  fires alternate mode, such as grenades in assault rifle.
+
+	+changeammo:  Mode switch.
+
+	"impulse 8":   Selects Medical Gear
+
+	"impulse 9":   Selects Binoculars
+
+	"impulse 10":  Selects Sniper Rifle
+
+	"impulse 11":  Selects AARDWILF
+
+	"impulse 12":  Selects Autogun
+
+	"impulse 14":  Toggle nightvision mode.
+
+	If you wish to find out what keys are set, just type "bind" to get a list of all current key bindings.
+
+
+
+
+
+
+
+
+5. The Weight Limit:
+	
+	There no longer are arbitrary limits on how much of each type of ammo can be carried.  Instead there is a total weight limit which applies to all types of ammo, all weapons and whatever armor you are currently wearing.  To help you know how much you are carrying, there is a new readout on your heads-up-display.  It is an unmarked number above your health and your armor. It reads from 0 to 100.  
+
+
+
+
+
+
+
+
+6. Dropping ammo and armor:
+
+	Since it is possible with the weight limit system to build up a very large reserve of one type of ammo, making it difficult to carry enough to keep other weapons usable, you can drop any ammo you don't wish to carry at any time.  You can also drop armor.  Dropping items requires you to switch to your fists first.  Using the mode button (+changeammo), cycle through the various types of ammo and armor in your possession.  The image of what you select appears at the center of your screen.  When you have selected what you wish to drop, hit the alternate fire button to drop the item, you will only drop one at a time if you have more than one of the items.  Pressing the primary fire button will reset the system.  
+
+	note:  you must drop the armor you are wearing before you can pick up new armor!
+
+
+
+
+
+
+
+
+7. Expanded weapons system:
+
+	Weapons are treated very differently in Nightmare Squad.  Here is a breakdown of the 
+	changes:
+
+	1. Some weapons have an alternate attack.
+		The assault rifle is a good example.  One fire button fires bullets, the other
+		launches a grenade.
+
+	2. Some weapons have different modes.
+		Again, I will use the assault rifle as an example.  The mode switch is used to 
+		select from between the different types of grenades.	
+
+	3. You must reload.
+		Weapons can only hold so much ammo at a time, however you can reload them at any
+		time.  Also note, reloading is never done automatically.  You must use the reload
+		command every time.
+
+	4. You can unload.
+		If for some reason you should wish to remove the ammo from a weapon you can,
+ 		using the unload command.  This is required in the case of the assault rifle for
+		changing grenade types.
+
+	5. You can drop weapons.
+		Most weapons can be dropped by hitting the drop key.  You will throw the weapon 
+		you are holding a few feet in front of you and switch to your fist.
+
+	6. You can only hold two large weapons at a time.
+		Many of the weapons such as shotguns and rifles are considered large, and you can
+		only hold two of them at a time.  If you have a shotgun and an assault rifle and
+		you want that flamethrower, you have to drop one of them first.
+
+	7. Some weapons are very large and can not be slung.
+		The Autogun and the AARDWILF can not be slung.  Once one is picked up, it remains
+		in use until it is dropped.  You can not switch away from these.  Also, you can 
+		only have one of these two at a time.
+
+	8. You don't have to wait for a weapon to reach active height before switching away from 
+		it.  So if you hit the wrong key, or are using the weapnext or weapprev commands,
+		you can quickly cycle to another weapon.
+
+A further note:  Zdoom has keys for cycling through the weapons sequentially:  The weapprev and weapnext commands.  These work normally, but with the following exception:  Certain weapons are not in the list for these commands.  These are the medical gear, the sniper rifle, the binoculars, the AARDWILF, and the autogun.  These weapons must be equipped by pressing the appropriate keys.  If one of these is currently equipped, either weapnext or weapprev will switch to the fists.
+
+
+
+
+
+
+
+8. The Weapons:
+
+	1. The Fists. 
+		Ammo: none
+		Attack: same as original, but a little faster.
+		Altattack: drop selected item.
+		Mode: select items to drop. (see section 4)
+
+	2. The Pistol
+		Ammo: 9mm rounds, 12 rounds per clip.
+		Attack: same as original, but much faster.
+		Altattack: none.
+		Mode: switch to double pistols (if you have a second pistol)
+
+	3. The Shotgun
+		Ammo: shotgun shells, 6 shell magazine, reloads one shell at a time.
+		Attack: large 20 pellet spread.
+		Altattack: none.
+		Mode: none
+
+	4. The Assault Rifle
+		Ammo: 11mm rifle rounds and grenades, 100 rounds per clip and 4 grenade magazine.
+		Attack: 750 round per minute machine gun fire.
+		Altattack: fires grenade
+		Mode: switches between grenade types if grenade magazine is empty
+		Grenade types:
+			Type 1: Fragmentation grenade with a powerful 1 to 2 meter blast radius.
+				Red cap with white stripe.
+			Type 2: Buckshot grenade firing a 40 pellet spread. (rare)
+				Blunt silver cap with black stripe.
+			Type 3: Incendiary grenade spraying fire over a large area on impact.
+				Yellow cap with white stripe.
+
+	5. The Uzi
+		Ammo: 9mm rounds, 30 rounds per clip.
+		Attack: 440 round per minute machine gun fire.
+		Altattack: none.
+		Mode: switch to double Uzis (if you have a second Uzi)
+
+	6. The Flamethrower
+		Ammo: Fuel canisters, 250 units per canister.
+		Attack: 2200 unit per minute spray of flaming fuel.  Fuel will stick to targets.
+		Altattack: none.
+		Mode: Toggle pilot light on and off.
+		Note: When pilot light is off, fuel will stick but does not burn and does not do
+			damage until it is ignited by a bullet, grenade, or fire.  Once ignited
+			it does damage as normal.
+
+	7. The Chainsaw
+		Same as original, but the throttle has been adjusted up.
+
+	8. The Medical Gear
+		Ammo: None.
+		Attack: None.
+		Altattack: Drop a 50 percent health pack.
+		Mode: None.
+		Note: You will have a 30 second down time after using the medical gear.  During
+ 			this period you will be unable to use any weapon.
+
+	9. The Sniper Rifle
+		Ammo: 13mm rifle rounds, 5 round magazine, reloads one at a time.
+		Attack: "One shot, one kill" (most of the time...)
+		Altattack: None.
+		Mode: Switch to Scope.
+		Note: Only the more powerful monsters can survive a single shot from this weapon,
+			but it is slow, and you can't reload while in scope mode.
+			
+
+	10. The Binoculars
+		Ammo: None.
+		Attack: None.
+		Altattack: None.
+		Mode: None.
+		Note: Switch to these and you can see far away...
+
+	11. The AARDWILF (Anti-Armor Railgun Device With Ionized Linear Field)
+		Ammo: AARDWILF Slugs, 15 rounds per magazine
+		Attack: Weapon charges up, pulses a laser, and fires a slug.
+		Altattack: None.
+		Mode: None.
+		Note: Charge time is approximately 2.5 seconds.  The laser pulses to allow for 
+			last second targeting adjustments and to create an ionized column through 
+			which the railgun fires the slug.  The whole process takes around 3
+			seconds.  The slug will travel completely through bodies, inflicting 
+			massive damage.  It is estimated that two shots could destroy the 
+			strongest demonoid.
+
+	12. The Autogun
+		Ammo: ammo drums, 200 rounds per drum.
+		Attack: 1150 round per minute machine gun fire.
+		Altattack: Toggle tracking on and off.
+		Mode: none.
+		Note: When tracking is on, a red circle indicator appears on the 
+			heads-up-display.  All fire will be at the location shown by the 
+			indicator.  The indicator will follow the target closest to the center of 
+			the field of view.
+
+
+
+
+
+
+
+
+9. Armor:
+
+Armor now works in a completely different way than in doom.  Both types of armor are rated from 1 to 100 percent.  Their rating is what percentage of the damage will be absorbed from the next hit you take.  The difference between the two types of armor is that blue armor lasts twice as long under fire.  But, either armor at 100% can completely stop the next bullet or fireball.  One problem with this is shotguns.  Each pellet is considered as a separate attack, so a shotgun blast can quickly make your armor go bye-bye.
+
+Also, armor has NO protective qualities against crushing damage, radiation damage, or fire damage.  You have been warned...
+
+	note:  you must drop the armor you are wearing before you can pick up new armor!  (see 		section 6)
+
+
+
+
+
+
+
+
+
+10. Monsters:
+
+There are no new monsters in this patch, but the existing ones do act differently.
+
+In general, the monsters can now tell each other where you are, and will react to the sight of a dead comrade, but they will also get confused about where you are if you manage to stay out of sight.  Eventually, they'll even get bored and return to their dormant state.  Also, their sight and hearing are now ranged.  
+
+In specific, two monsters have changed significantly:
+First, BEWARE THE SHOTGUN GUY!  His shotgun works just like yours, and can turn you to paste.  How dangerous he is depends on the skill level.  At "I'm too young to die," his blast contains only four pellets.  At "NIGHTMARE" level he gets the full 20.  Ultra-Violence gets you hit by 16.
+
+Second, The Spider Mastermind now fires one bullet at a time instead of three as in previously, but it makes up for that by firing them very quickly.
+
+Also, a few words on fireballs.  The Barons' and Knights' fireballs do fire damage, which goes right through armor.  The Imps' fireballs are vampiric, transferring whatever damage they do to you back to the imp that threw them (that is, if he's still alive...).
+
+ 
+
+
+
+
+
+
+
+11. Cheating:
+
+The give command will allow you to choose specific items to receive on demand.  Open the console by pressing the <~> key, and type "give <itemname>" for instance, to receive an assault rifle, type:
+
+give assault rifle
+
+that's all there is to it.  Here is a complete list of all valid names:
+
+		"Basic Armor"
+		"Mega Armor"
+		"Armor Bonus"
+		"Fist"
+		"Chainsaw"
+		"Pistol"
+		"Shotgun"
+		"Assault Rifle"
+		"Uzi"
+		"Flamethrower"
+		"AARDWILF"
+		"Sniper Rifle"
+		"Autogun"
+		"Medical Gear"
+		"Binoculars"
+		"9mm Clip"
+		"Shells"
+		"Shell Box"
+		"Assault Clip"
+		"Assault Box"
+		"Ammo Drum"
+		"Fuel"
+		"Type1"
+		"Type1 Box"
+		"Type2"
+		"Type2 Box"
+		"Type3"
+		"Type3 Box"
+		"Slugs"
+		"Bullet"		(13mm for Sniper Rifle)
+		"Bullet Box"		(same)
+		"Invulnerability"
+		"Berserk"
+		"Invisibility"
+		"Radiation Suit"
+		"Computer Map"
+		"Light Amplification Visor"
+		"Blue Keycard"
+		"Yellow Keycard"
+		"Red Keycard"
+		"Blue Skull Key"
+		"Yellow Skull Key"
+		"Red Skull Key"
+
+	The following are also valid:
+
+	give keys
+	give weapons
+	give ammo
+	
+
+
+
+
+
+
+
+
+12. Settings.bex:
+
+Also, there is an external file called settings.bex.  This file contains the default settings for ammo quantities and mass.  If you change these, you will need to tell the game to use this file by adding the following setting to the command line:
+
+*********************
+* -deh settings.bex *
+*********************
+
+A typical command line looks like this:
+
+NSquad -iwad c:\doom2\doom2.wad -deh settings.bex
+
+
+
+
+
+
+
+
+
+
+13. Credits:
+(or, where I swiped stuff from)
+
+A few of the graphics in NSquad.wad were drawn by myself, from scratch or modified doom weapons.
+Others I borrowed and in some cases modified.
+
+Here is a list of sources I "borrowed" from, these are all the sources I remember...
+
+AliensTC - In specific, the autogun.
+-Justin Fisher
+
+Alien doom - the base graphics for the assault rifle.
+-Dan S. Goldwasser
+-Marc Gordon  
+
+Aliens doom 3 - the pickup sprite for the flamethrower.
+-Mike Gummelt
+
+Part_exl.wad - the AARDWILF graphics.
+-Overkill777, Minion, Strike Force, and 3D Realms
+
+TICdpist.wad - the double pistols.
+-The Innocent Crew
+
+DTCOG30.zip - the Uzis.  (I reused large portions of the reload graphics for other weapons)
+		also, the charge-up sound for the AARDWILF.
+-Don Tello
+
+I also got the assault and sniper rifle sounds from dt-m16.wad and dt-tommy.wad respectively, both by Don Tello.
+
+The grenade launch sound came from AliensTC.
+
+Much credit goes to Randy Heit for writing ZDoom, and for allowing me to include zdoom specific files with Nightmare Squad.  Thanks again.
+
+Further credit goes to TeamTNT and Chi Hoang for their work if porting the code for the doom engine.  
+
+And most of all, credit, gratitude, and awe goes to id Software for making the best computer game of all time and then putting the source code on the net.  
+
+
+
+A further note on the graphics from the Aliens patches.  While I have drawn inspiration from several sources, including Aliens, none of the weapons in Nightmare Squad are intended to directly refer to any copyrighted material.  
+
+****This is not, nor is it meant to be, an Aliens conversion.****
+
+
+
+
+14. Bugs:
+
+	So far, I have been unable to successfully run a cooperative game over the internet without getting consistancy failures.  I do not know if this is due to bugs or bad connections.  
+	If it crashes or if you find any other bugs, please e-mail me at the address below and tell me what happened.  Thanks.
+
+
+
+
+
+Final Note:
+If any map makers would like a list of the thing numbers for the extended weapons, just send me e-mail.
+
+
+---Well, that's it.  Have fun, 
+
+AFTERSHOCK
+
+aftershock_81@hotmail.com
+

@@ -1,0 +1,119 @@
+Ammo 0 (9mm)
+Max ammo = 60
+Per ammo = 12
+Ammo Mass = 2
+
+Ammo 1 (Shells)
+Max ammo = 40
+Per ammo = 4
+Ammo Mass = 3
+
+Ammo 2 (Fuel)
+Max ammo = 1000
+Per ammo = 250
+Ammo Mass = 1
+
+Ammo 3 (Type1 Grenades)
+Max ammo = 30
+Per ammo = 1
+Ammo Mass = 20
+
+Ammo 4 (11mm Rifle Clips)
+Max ammo = 500
+Per ammo = 100
+Ammo Mass = 2
+
+Ammo 5 (Autogun Drums)
+Max ammo = 1000
+Per ammo = 500
+Ammo Mass = 2
+
+Ammo 6 (Type2 Grenades)
+Max ammo = 30
+Per ammo = 1
+Ammo Mass = 20
+
+Ammo 7 (Type3 Grenades)
+Max ammo = 30
+Per ammo = 1
+Ammo Mass = 20
+
+Ammo 8 (AARDWILF slugs)
+Max ammo = 15
+Per ammo = 15
+Ammo Mass = 50
+
+Ammo 9 (13mm Sniper Rounds)
+Max ammo = 20
+Per ammo = 1
+Ammo Mass = 10
+
+Mag 0 (Pistol)
+Max Clip = 12
+Reload Amt = 12
+
+Mag 1 (2nd Pistol)
+Max Clip = 12
+Reload Amt = 12
+
+Mag 2 (Shotgun)
+Max Clip = 6
+Reload Amt = 1 
+
+Mag 3 (Uzi)
+Max Clip = 30
+Reload Amt = 30
+
+Mag 4 (2nd Uzi)
+Max Clip = 30
+Reload Amt =30
+
+Mag 5 (Assault Rifle)
+Max Clip = 100
+Reload Amt = 100
+
+Mag 6 (Type1 Grenades)
+Max Clip = 4
+Reload Amt = 1
+
+Mag 7 (Type2 Grenades)
+Max Clip = 4
+Reload Amt = 1
+
+Mag 8 (Type3 Grenades)
+Max Clip = 4
+Reload Amt = 1
+
+Mag 9 (Autogun)
+Max Clip = 500
+Reload Amt = 500
+
+Mag 10 (Flamethrower)
+Max Clip = 250
+Reload Amt = 250
+
+Mag 11 (AARDWILF)
+Max Clip = 15
+Reload Amt = 15
+
+Mag 12 (Sniper Rifle)
+Max Clip = 5
+Reload Amt = 1
+
+Misc 0
+Initial Health = 100
+Initial Bullets = 72
+Max Health = 100
+Max Armor = 100
+Green Armor Class = 1
+Blue Armor Class = 2
+Max Soulsphere = 100
+Soulsphere Health = 50
+Megasphere Health = 100
+God Mode Health = 100
+IDFA Armor = 100
+IDFA Armor Class = 2
+IDKFA Armor = 100
+IDKFA Armor Class = 2
+Armor Mass = 300
+Max Mass = 4000
