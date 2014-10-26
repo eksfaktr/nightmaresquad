@@ -1,0 +1,3 @@
+#include "DEC_PLYR" // Player class
+#include "DECSLOT1"
+#include "DECSLOT2"

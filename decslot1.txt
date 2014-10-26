@@ -1,0 +1,5 @@
+ACTOR squaddieFist : Fist
+{
+	+WEAPON.NOALERT
+	Obituary "Oh man! %o got punched! Nice hit, %k!"
+}

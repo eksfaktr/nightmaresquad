@@ -1,0 +1,18 @@
+- Replace all shitty graphics
+= Implement weight limit system
+/*
+<12:56:50> "MageofMystra": like have a WeightedItem class that all your pickups inherit from
+<12:57:00> "MageofMystra": yeah, and have a WeightedHandling thing on the WeightedItem
+<12:57:07> "MageofMystra": on item spawns, you run a goto to weighthandling
+<12:57:22> "MageofMystra": issue is i'm not sure if you can easily modify the weight from a subclass
+<12:57:33> "MageofMystra": can you store arbitrary values on a DECORATE thing and reference it?
+<12:57:47> "MageofMystra": being able to do that'd make it far far cleaner
+<12:57:52> "MageofMystra": then having it on every item pickup routine
+<12:58:10> "MageofMystra": hell, if you felt particularly cooky
+<12:58:22> "MageofMystra": ooh, it'd be really hacky, but you could potentially have the superclass have a pickup routine akin to, say
+<12:58:27> "MageofMystra": first it does a goto to your weight thing
+<12:58:34> "MageofMystra": then the weight thing does a goto to a custom state, say NewPickup
+<12:58:41> "MageofMystra": then you rewrite NewPickup on inherited classes
+<12:58:56> "MageofMystra": you wouldn't have a boilerplate on your spawn going to weightcheck
+/*
+-REMEMBER, each item must have it's own inventory weight defined, but inherit from WeightItem
