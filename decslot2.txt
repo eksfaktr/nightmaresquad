@@ -1,0 +1,123 @@
+actor squaddiePistol : Weapon
+{
+ Weapon.SelectionOrder 1900
+ Weapon.AmmoUse 1
+ Weapon.AmmoGive 20
+ Weapon.AmmoType "9mmAmmo"
+ Inventory.Pickupmessage "Picked up a pistol."
+ +INVENTORY.UNTOSSABLE
+ States
+ {
+ Ready:
+  PISG A 1 A_WeaponReady
+  Loop
+ Deselect:
+  PISG A 1 A_Lower
+  Loop
+ Select:
+  PISG A 1 A_Raise
+  Loop
+ Fire:
+  PISG A 4
+  PISG B 6 A_FireBullets(4,4,-1,6,"BulletPuff",1)
+  PISG C 4
+  PISG B 5 A_ReFire
+  Goto Ready
+ Flash:
+  PISF A 3 Bright A_Light2
+  PISF A 3 Bright A_Light1
+  PISF A 0 Bright A_Light0
+  Goto LightDone
+ Spawn:
+  PIST A -1
+  Stop
+ }
+}
+
+ACTOR 9mmAmmo : Ammo replaces Clip
+{
+ Inventory.Amount 10 // You'll get half this if a monster drops it.
+ Inventory.MaxAmount 150
+ Ammo.BackpackAmount 30 // How much you'll get out of backpacks or equivalent.
+ Ammo.BackpackMaxAmount 300 // The new max amount if player has a backpack.
+ Inventory.Icon "CLIPA0" // This displays on the fullscreen HUD.
+ Inventory.PickupMessage "Picked up some 9mm ammo."
+ States
+ {
+ Spawn:
+  CLIP A -1
+  Stop
+ }
+}
+
+ACTOR 9mmAmmoSmall : 9mmAmmo
+{
+ Inventory.Amount 6
+ Inventory.PickupMessage "Picked up a bit of 9mm ammo."
+ Inventory.PickupSound "Beretta/Drop"
+ +DROPPED
+ States
+ {
+ Spawn:
+  9MMP A -1
+  Stop
+ }
+}
+
+ACTOR squaddiePistolPickup : CustomInventory
+{
+   Inventory.PickupMessage ""
+
+   States
+   {
+   Spawn:
+      UTBP A 3
+      Loop
+   Pickup:                                                          // When Salvo touches this item:
+      TNT1 A 0 A_JumpIfInventory("squaddiePistol", 1, "AlreadyHave")     // does he already have it?
+      TNT1 A 0 A_GiveInventory("WeightUnit", 5)                    // try to load the weapon weight
+      TNT1 A 0 A_JumpIfInventory("WeightUnit", 101, "CancelPickup") // test if still within carriable limit (NOT ONE MORE THAN MAX)
+
+      // ~~~ the weapon can be carried
+      TNT1 A 0 A_GiveInventory("squaddiePistol")     // grant the actual weapon
+      TNT1 A 10 A_Log("Picked up the 9mm Sidearm") // log its acquisition
+      TNT1 A 105
+      Stop
+   CancelPickup:
+      // ~~~ the weapon cannot be kept, leave it on ground
+      TNT1 A 0 A_TakeInventory("WeightUnit", 5)        // unload the weapon weight
+      TNT1 A 35 A_Print("Not enough room for the 9mm Handgun")    // cancel the actual pickup (leave on ground)
+      TNT1 A 35 A_Print("I gotta dump some of this shit.") // and suggest to make room for it
+      TNT1 A 105
+      Fail
+   AlreadyHave:
+      // ~~~ Salvo already has it
+      TNT1 A 35 A_Print("I've already got a Handgun")
+      TNT1 A 105
+      Fail
+   }
+}
+
+ACTOR DroppedsquaddiePistol
+{
+   PROJECTILE
+   -NOGRAVITY
+
+   Damage 0
+   Radius 16
+   Height 8
+   Speed 9
+   DeathSound "weapons/drop"
+
+   States
+   {
+   Spawn:
+      TNT1 A 0
+      PIST A 0
+      Loop
+   Death:
+      TNT1 A 0
+      PIST A 0 A_SpawnItem("squaddiePistolPickup", 0, 0, 0, 0)
+      Stop
+   }
+}

@@ -14,28 +14,21 @@ ACTOR squaddie : DoomPlayer
 // Base code borrowed ruthlessly from RSL
 // Remaining concept worked from idea by Mage of Mystra
 
-ACTOR WeightItem : PuzzleItem
+// [[[                                  ]]]
+// [[[ Weight unit for weighted weapons ]]]
+// [[[                                  ]]]
+
+ACTOR WeightUnit : PuzzleItem
 {
-	-INVBAR
-	
-	Inventory.MaxAmount 100
-	Inventory.Icon TNT1A0
-	
-	States
-	{
-		Spawn:
-			TNT1 A 1
-			Loop
-		NewPickup:
-			TNT1 A 0 A_GiveInventory("WeightItem", 1)
-			TNT1 A 0 A_JumpIf(PlayerWeight <100, Pickup)
-			TNT1 A 0 A_JumpIf(PlayerWeight =100, CancelPickup)
-			Stop
-		Pickup
-			TNT1 A 0
-			Stop
-		CancelPickup
-			TNT1 A 0 A_TakeInventory(WeightItem", 1)
-			Fail
-	}
+   -INVBAR
+
+   Inventory.MaxAmount 215 // sum of all weapons weights!
+   Inventory.Icon TNT1A0
+
+   States
+   {
+      Spawn:
+         TNT1 A 1
+         Loop
+   }
 }
