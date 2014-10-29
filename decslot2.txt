@@ -28,11 +28,10 @@ actor squaddiePistol : Weapon
   PISF A 0 Bright A_Light0
   Goto LightDone
 	Zoom:
-      TNT1 A 10 A_Log("Dropping 'Infantry rifle'...")
-      TNT1 A 1 A_TakeInventory("IsDropping", 1)                      // stop release action
-      TNT1 A 0 A_TakeInventory("WeightUnit", 15)                    // re-acquire carrying capacity
-      TNT1 A 0 A_FireCustomMissile("DroppedInfantryRifle", 0, 0, 0) // throw weapon
-      TNT1 A 1 A_TakeInventory("RSLInfantryRifle", 1)               // drop actual weapon (no longer selected)
+      TNT1 A 10 A_Log("Dropping Sidearm... you sure about this?")
+      TNT1 A 0 A_TakeInventory("WeightUnit", 5)                    // re-acquire carrying capacity
+      TNT1 A 0 A_FireCustomMissile("squaddiePistolPickup", 0, 0, 0) // throw weapon
+      TNT1 A 1 A_TakeInventory("squaddiePistol", 1)               // drop actual weapon (no longer selected)
       Stop
  Spawn:
   PIST A -1
