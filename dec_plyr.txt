@@ -4,19 +4,15 @@ ACTOR squaddie : DoomPlayer
 	
 	Player.DisplayName squaddie
 	
-	Player.StartItem "squaddiePistol"
-	Player.StartItem "squaddieFist"
+	Player.StartItem "squaddiePistol" 1
+	Player.StartItem "squaddieFist" 1
 	
 	Player.WeaponSlot 1, squaddieFist
 	Player.WeaponSlot 2, squaddiePistol
 }
 
 // Base code borrowed ruthlessly from RSL
-// Remaining concept worked from idea by Mage of Mystra
-
-// [[[                                  ]]]
 // [[[ Weight unit for weighted weapons ]]]
-// [[[                                  ]]]
 
 ACTOR WeightUnit : PuzzleItem
 {
