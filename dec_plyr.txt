@@ -6,6 +6,7 @@ ACTOR squaddie : DoomPlayer
 	
 	Player.StartItem "squaddiePistol" 1
 	Player.StartItem "squaddieFist" 1
+	Player.StartItem "9mmammo" 15
 	
 	Player.WeaponSlot 1, squaddieFist
 	Player.WeaponSlot 2, squaddiePistol
