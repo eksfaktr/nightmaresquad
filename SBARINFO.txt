@@ -1,0 +1,30 @@
+Height 32;
+
+StatusBar Normal, ForceScaled
+{
+    //maincounters
+    DrawImage "graphics/STBAR.png", 0, 168;
+    DrawImage "STTPRCNT", 90, 171;
+    DrawImage "STTPRCNT", 221, 171;
+    DrawNumber 3, HUDFONT_DOOM, Untranslated, Ammo1, 44, 171;
+    DrawNumber 3, HUDFONT_DOOM, Untranslated, Health, 90, 171;
+    DrawNumber 3, HUDFONT_DOOM, Untranslated, Armor, 221, 171;
+
+    //keys
+    DrawSwitchableImage KeySlot 2 && 5, "NullImage", "STKEYS0", "STKEYS3", "STKEYS6", 239, 171;
+    DrawSwitchableImage KeySlot 3 && 6, "NullImage", "STKEYS1", "STKEYS4", "STKEYS7", 239, 181;
+    DrawSwitchableImage KeySlot 1 && 4, "NullImage", "STKEYS2", "STKEYS5", "STKEYS8", 239, 191;
+
+    //weight
+    DrawNumber 3, INDEXFONT, Brown, WeightUnit, 129, 186;
+
+    GameMode Cooperative, Deathmatch, Teamgame
+    {
+        DrawImage Translatable "STFBANY", 144, 169;
+    }
+
+    DrawSelectedInventory AlternateOnEmpty, INDEXFONT, 143, 168
+    {
+        DrawMugshot 5, 143, 168;
+    }
+}
