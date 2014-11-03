@@ -1,8 +1,47 @@
-#library "nsquad"b //Name of the library
+#library "nsquad" //Name of the library
 #include "zcommon.acs"
 
 	script "playernumber" ENTER
 	{
 		Thing_ChangeTID(0, 1000 + PlayerNumber());
 	}
+
+global int 0:weaponids[]; //this will allow us to reference the weapons by arbitrary number once the weight is assigned.
+
+global str 1:weaponname[]; //our internal weapon names
+global int 2:weightunit[]; //the amount they weigh
+
+	script "weights" ENTER
+	{
+		if (weaponids[0] == 0 {
+			weaponname[0] = "squaddiefist"
+			weaponname[1] = "squaddiepistol"
+			weaponname[2] = "squaddieduals"
+			weaponname[3] = "squaddieshotty" //large weapon, max 2 of these
+			weaponname[4] = "assaultrifle" //large weapon, max 2 of these
+			weaponname[5] = "uzi1"
+			weaponname[6] = "uzi2"
+			weaponname[7] = "flamer" //large weapon, max 2 of these
+			weaponname[8] = "squaddiesaw"
+//			weaponname[9] = "medgear"
+			weaponname[10] = "sniper" //large weapon, max 2 of these
+//			weaponname[11] = "binocs" //for now
+			weaponname[12] = "aardwilf" // unslingable, only one of these, also counts against the large weapon
+			weaponname[13] = "autogun" //unslingable, only one of these, also counts against the large weapon
+			weightunit[0] = 0
+			weightunit[1] = 2
+			weightunit[2] = 2 //this is TOTAL, pistol (2) + pistol (2) = duals (4)
+			weightunit[3] = 6
+			weightunit[4] = 11
+			weightunit[5] = 4
+			weightunit[6] = 4 //again, total, UZI (4) + uzi (4) = duals (8)
+			weightunit[7] = 10
+			weightunit[8] = 13
+//			weightunit[9] = 
+			weightunit[10] = 11
+//			weightunit[11] = 
+			weightunit[12] = 25
+			weightunit[13] = 16
+		}
+			
 
