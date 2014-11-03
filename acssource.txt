@@ -1,0 +1,8 @@
+#library "nsquad"b //Name of the library
+#include "zcommon.acs"
+
+	script "playernumber" ENTER
+	{
+		Thing_ChangeTID(0, 1000 + PlayerNumber());
+	}
+
